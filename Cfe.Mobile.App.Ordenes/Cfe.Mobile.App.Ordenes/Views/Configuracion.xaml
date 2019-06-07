@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:vm="clr-namespace:Cfe.Mobile.App.Ordenes.Core.Core.ViewModel"
+             mc:Ignorable="d"
+             x:Class="Cfe.Mobile.App.Ordenes.Views.Configuracion"
+             NavigationPage.HasNavigationBar="False">
+    <ContentPage.BindingContext>
+        <vm:ConfigViewModel/>
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <StackLayout Margin="0" VerticalOptions="FillAndExpand" >
+            <Grid Style="{StaticResource menuGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Label Grid.Column="1" Grid.Row="0"   Text="Ordenes Móvil" Style="{StaticResource TituloLabel}" />
+                <Button  Grid.Column="0" Grid.Row="0" ImageSource="ic_arrow_back_white_18dp.png" Style="{StaticResource boton}" 
+                         Command="{Binding NavegarACommand}" CommandParameter="Home" />
+
+            </Grid>
+            <Grid Style="{StaticResource FormGrid}">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <BoxView Grid.ColumnSpan="6" Grid.RowSpan="8" Style="{StaticResource FormBorder}" />
+                <BoxView Grid.ColumnSpan="6" Grid.RowSpan="8" Style="{StaticResource FormBack}" />
+                <Label Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4"  Text="Mis Datos" Style="{StaticResource SubtituloLabel}" />
+                <Label Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="2"  Text="RPE: " Style="{StaticResource FormLabel}" />
+                <Entry Grid.Column="2" Grid.Row="1" Grid.ColumnSpan="4" Placeholder="RPE del Trabajador" Text="{Binding RPE}"/>
+                <Label Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2"  Text="Nombre: " Style="{StaticResource FormLabel}" />
+                <Entry Grid.Column="2" Grid.Row="2" Grid.ColumnSpan="4" Text="{Binding Nombre}" Placeholder="Nombre del Trabajador"/>
+                <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  Text="División:" Style="{StaticResource FormLabel}" />
+                <Picker Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="4" Title="Selecciona una división" 
+                        ItemsSource="{Binding Divisiones}"  ItemDisplayBinding="{Binding Nombre}" SelectedItem="{Binding Id}"/>                
+                <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"  Text="Zona:" Style="{StaticResource FormLabel}"  />
+                <Entry Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="4" Placeholder="Zona"/>
+                <Label Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2"  Text="Área:" Style="{StaticResource FormLabel}"  />
+                <Entry Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="4" Placeholder="Área"/>
+                <Label Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"  Text="ID Dispositivo: " Style="{StaticResource FormLabel}" VerticalOptions="Start"  />
+                <Editor Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4" Text="{Binding IDNotif}" HeightRequest="200"  Margin="5"/>
+
+                <Button  Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="6"  ImageSource="ic_save_white_18dp.png"  
+                         ContentLayout="Left, 20" Text="Guardar" Command="{Binding RegistrarEquipoCommand}" Margin="5"/>
+                
+            </Grid>
+        </StackLayout>
+    </ScrollView>
+</ContentPage>

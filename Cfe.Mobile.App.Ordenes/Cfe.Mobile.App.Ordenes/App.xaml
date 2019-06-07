@@ -1,0 +1,192 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cfe.Mobile.App.Ordenes.App">
+    <Application.Resources>
+        <ResourceDictionary>
+            <!--Botones-->
+            <Style TargetType="Button">
+                <Setter Property="HorizontalOptions" 
+                        Value="Center" />
+                <Setter Property="VerticalOptions" 
+                        Value="CenterAndExpand" />
+                <Setter Property="BorderColor"
+                        Value="#033F01" />
+                <Setter Property="BackgroundColor" 
+                        Value="#4F7202"/>
+                <Setter Property="BorderRadius" 
+                        Value="15" />
+                <Setter Property="BorderWidth" 
+                        Value="1" />
+                <Setter Property="WidthRequest"
+                        Value="200" />
+                <Setter Property="TextColor" 
+                        Value="#F0EFF2" />
+                <Setter Property="HeightRequest"
+                        Value="40"/>
+                <Setter Property="FontAttributes"
+                        Value="Bold"/>                
+            </Style>
+            <Style  TargetType="Entry">
+                <Setter Property="Margin"
+                        Value="5"/>
+                <Setter Property="PlaceholderColor"
+                        Value="#7A85A5"/>
+            </Style>
+            <!-- ContentPage -->
+            <Style TargetType="ContentPage"
+                   ApplyToDerivedTypes="True">
+                <Setter Property="BackgroundColor"
+                        Value="#F0EFF2" />
+            </Style>
+            <!--Menu-->
+            <Style x:Key="TituloLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" 
+                        Value="Center" />
+                <Setter Property="VerticalOptions" 
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="#F0EFF2"/>
+                <Setter Property="FontSize" 
+                        Value="Medium"/>
+                <Setter Property="FontAttributes"
+                        Value="Bold"/>
+                <Setter Property="Margin"
+                        Value="10"/>
+            </Style>
+            <Style  x:Key="menuGrid"  TargetType="Grid">
+                <Setter Property="BackgroundColor"
+                        Value="#4F7202"/>
+            </Style>
+            <Style x:Key="boton" TargetType="Button">
+                <Setter Property="BackgroundColor"
+                        Value="#4F7202"/>
+                <Setter Property="BorderColor"
+                        Value="#4F7202"/>
+                <Setter Property="WidthRequest"
+                        Value="50"/>
+                <Setter Property="HeightRequest"
+                        Value="50"/>
+            </Style>
+
+            <!--Labels-->
+            <Style TargetType="Label">
+                <Setter Property="TextColor"
+                        Value="#7A85A5"/>
+            </Style>
+            
+            <Style x:Key="SubtituloLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" 
+                        Value="Center" />
+                <Setter Property="VerticalOptions" 
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="#033F01"/>
+                <Setter Property="FontSize" 
+                        Value="Small"/>
+                <Setter Property="FontAttributes"
+                        Value="Bold"/>
+            </Style>
+
+            <Style x:Key="FormLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" 
+                        Value="End" />
+                <Setter Property="VerticalOptions" 
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="#7A85A5"/>
+                <Setter Property="FontSize" 
+                        Value="Small"/>
+                <Setter Property="FontAttributes"
+                        Value="Bold"/>
+            </Style>
+            <Style x:Key="FormText" TargetType="Label">
+                <Setter Property="HorizontalOptions" 
+                        Value="Start" />
+                <Setter Property="VerticalOptions" 
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="#7A85A5"/>
+                <Setter Property="FontSize" 
+                        Value="Small"/>              
+            </Style>
+            <!--ListView-->
+            <Style TargetType="ListView">
+                <Setter Property="SeparatorVisibility"
+                        Value="Default"/>
+                <Setter Property="SeparatorColor"
+                        Value="#7A85A5"/>
+                
+            </Style>
+
+            <Style x:Key="ListTitleLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" 
+                        Value="End" />
+                <Setter Property="VerticalOptions" 
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="#7A85A5"/>
+                <Setter Property="FontSize" 
+                        Value="Small"/>
+                <Setter Property="FontAttributes"
+                        Value="Bold"/>
+            </Style>
+            <Style x:Key="ListSubtitleLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" 
+                        Value="End" />
+                <Setter Property="VerticalOptions" 
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="#7A85A5"/>
+                <Setter Property="FontSize" 
+                        Value="Micro"/>
+                <Setter Property="FontAttributes"
+                        Value="Bold"/>
+            </Style>
+            <Style x:Key="ListTitleTextLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" 
+                        Value="Start" />
+                <Setter Property="VerticalOptions" 
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="#7A85A5"/>
+                <Setter Property="FontSize" 
+                        Value="Small"/>
+            </Style>
+            <Style x:Key="ListTextLabel" TargetType="Label">
+                <Setter Property="HorizontalOptions" 
+                        Value="Start" />
+                <Setter Property="VerticalOptions" 
+                        Value="Center" />
+                <Setter Property="TextColor"
+                        Value="#7A85A5"/>
+                <Setter Property="FontSize" 
+                        Value="Micro"/>            
+            </Style>
+            
+            <!-- Form Grid-->
+            <Style  x:Key="FormGrid"  TargetType="Grid">
+                <Setter Property="BackgroundColor"
+                        Value="#F0EFF2"/>
+                <Setter Property="Margin"
+                        Value="20"/>
+            </Style>
+            
+            <Style x:Key="FormBorder" TargetType="BoxView">
+                <Setter Property="BackgroundColor"
+                        Value="#7A85A5"/>
+                <Setter Property="Margin"
+                        Value="-1"/>
+            </Style>
+            <Style x:Key="FormBack" TargetType="BoxView">
+                <Setter Property="BackgroundColor"
+                        Value="#F0EFF2"/>
+                <Setter Property="Margin"
+                        Value="1"/>
+            </Style>
+
+
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>

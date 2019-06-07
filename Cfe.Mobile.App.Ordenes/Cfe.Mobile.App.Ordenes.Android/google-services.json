@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "5264686068",
+    "firebase_url": "https://ordenes-ab907.firebaseio.com",
+    "project_id": "ordenes-ab907",
+    "storage_bucket": "ordenes-ab907.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:5264686068:android:beb730c47bc7c068",
+        "android_client_info": {
+          "package_name": "Cfe.Mobile.App.Ordenes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "5264686068-8t63sbq1ml0djqm7amf1ei8159r83uru.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQo9lRoQJ96CcgcVFTWceT3eUVOR1I5F0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "5264686068-8t63sbq1ml0djqm7amf1ei8159r83uru.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
