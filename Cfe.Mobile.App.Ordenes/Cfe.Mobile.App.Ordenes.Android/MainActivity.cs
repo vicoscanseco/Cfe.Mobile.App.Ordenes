@@ -55,11 +55,11 @@ namespace Cfe.Mobile.App.Ordenes.Droid
             CreateNotificationChannel();
             
             
-            Log.Debug(TAG, "InstanceID token: " + FirebaseInstanceId.Instance.Token);
+            //Log.Debug(TAG, "InstanceID token: " + FirebaseInstanceId.Instance.Token);
 
 
             FirebaseMessaging.Instance.SubscribeToTopic("9l0bd");
-            Log.Debug(TAG, "Subscribed to remote notifications");
+            //Log.Debug(TAG, "Subscribed to remote notifications");
 
             LoadApplication(new App());
         }

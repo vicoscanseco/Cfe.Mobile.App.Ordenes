@@ -22,15 +22,27 @@ namespace Cfe.Mobile.App.Ordenes.Core.Core.ViewModel {
         public string IDNotif { get => idNotif; set => Set(ref idNotif, value); }
 
         private string rpe;
-        public string RPE { get => rpe; set => Set(ref rpe, value); }
+        public string RPE { get => rpe; set {
+                Set(ref rpe, value);
+                RegistrarEquipoCommand.RaiseCanExecuteChanged();
+            } }
         private string nombre;
         public string Nombre { get => nombre; set => Set(ref nombre, value); }
 
         public ConfigViewModel() {
             //Se cargan los datos en las tablas de Division
             //dtc.Delete<Division>()
+            rpe = "";
+            nombre = "";
+
             cargarDB();
+            //try {
             GetDatosUsuario();
+            //} catch(NullReferenceException e) {
+            //    Debug.WriteLine(e.ToString());
+            //    RPE = "";               
+            //}
+
             
             var os = OS.DependencyService.Get<OS.IOS>();
             IDNotif = os.ObtieneIDNotificaciones();
@@ -47,22 +59,28 @@ namespace Cfe.Mobile.App.Ordenes.Core.Core.ViewModel {
         public ObservableCollection<Area> Areas { get => areas; set => Set(ref areas, value); }
 
 
-        private async void GetDatosUsuario() {
-            var users = await dtc.GetAllAsync<Usuario>();
-            if (users.Count != 0) {
-                //Se leen los datos de la DB
-                var user = users.Select(x => x).FirstOrDefault();
-                RPE = user.Rpe;
-                IDNotif = user.IdEquipo;
-                Nombre = user.Nombre;
+        public async void GetDatosUsuario() {
+            try {
+                var users = await dtc.GetAllAsync<Usuario>();
+                if (users.Count != 0) {
+                    //Se leen los datos de la DB
+                    var user = users.Select(x => x).FirstOrDefault();
+                    RPE = user.Rpe;
+                    IDNotif = user.IdEquipo;
+                    Nombre = user.Nombre;
 
-            }
+                }
+            } catch { }
         }
 
-        private async void cargarDB() {
+        public async void cargarDB() {
             try {
-                var div = await dtc.GetAllAsync<Division>();
-                if (div.Count == 0) {
+                int sidivis = 0;
+                try {
+                    var div = await dtc.GetAllAsync<Division>();
+                    sidivis = div.Count();
+                } catch { }
+                if (sidivis == 0) {
                     //Si es 0 se bajan los datos de la red
                     var divs = await dbapi.ObtenerDivisiones();
                     var zonas = await dbapi.ObtenerZonas();
@@ -128,7 +146,7 @@ namespace Cfe.Mobile.App.Ordenes.Core.Core.ViewModel {
                     //await page.DisplayAlert("Alert from View Model", "", "Ok");
                 }
 
-            }, () => { return true; }));
+            }, () => { return !string.IsNullOrWhiteSpace(RPE); }));
         }
 
 

@@ -50,7 +50,7 @@
                 <Label Grid.Column="0" Grid.Row="3" Grid.ColumnSpan="2"  Text="RPU:" Style="{StaticResource FormLabel}"  />
                 <Label Grid.Column="2" Grid.Row="3" Grid.ColumnSpan="4"  Text="{Binding Seleccionada.Rpu}" Style="{StaticResource FormText}"  />
                 <Label Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2"  Text="Descripción: " Style="{StaticResource FormLabel}" VerticalOptions="Start"  />
-                <Editor Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="4" Text="{Binding Seleccionada.Descripcion}" HeightRequest="200"  Margin="5"/>
+                <Editor Grid.Column="2" Grid.Row="4" Grid.ColumnSpan="4" Text="{Binding Seleccionada.Descripcion}" HeightRequest="200"  Margin="5" IsEnabled="False"/>
                 <Button  Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="3" ImageSource="ic_map_white_18dp.png"
                          Text="Ver Mapa" Command="{Binding VerMapaCommand}" Margin="5" />
                 <Button  Grid.Column="3" Grid.Row="5" Grid.ColumnSpan="3" ImageSource="ic_explore_white_18dp.png"

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Cfe.Mobile.App.Ordenes.Core.Core.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,9 +13,25 @@ namespace Cfe.Mobile.App.Ordenes.Views {
     public partial class Configuracion : ContentPage {
         public Configuracion() {
             InitializeComponent();
+            
         }
         public Configuracion(params object[] parametros) {
             InitializeComponent();
         }
+
+        //protected async override void OnAppearing() {
+        //    base.OnAppearing();
+
+        //    //ViewModel.cargarDB();
+        //    //ViewModel.GetDatosUsuario();
+        //}
+
+
+        private ConfigViewModel ViewModel {
+            get {
+                return BindingContext as ConfigViewModel;
+            }
+        }
+
     }
 }

@@ -33,5 +33,15 @@ namespace Cfe.Mobile.App.Ordenes.Core.Core.Data {
             await dbAsync.CreateTableAsync<Model.Area>();
             await dbAsync.CreateTableAsync<Model.Usuario>();
         }
+
+        public async void ActualizaTablas(string idEquipo) {
+            try {
+                //await dbAsync.DropTableAsync<Model.Usuario>();               
+                await dbAsync.CreateTableAsync<Model.Usuario>();
+                var user = new Model.Usuario { IdArea = 0, IdDivision = 0, IdEquipo = idEquipo, IdZona = 0, Nombre = "Desconocido", Rpe = "XXXXX" };
+                await _dbAsync.InsertAsync(user);
+            } catch { }
+
+        }
     }
 }

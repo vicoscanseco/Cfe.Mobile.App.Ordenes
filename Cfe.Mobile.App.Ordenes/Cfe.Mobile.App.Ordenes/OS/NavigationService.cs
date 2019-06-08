@@ -45,7 +45,7 @@ namespace Cfe.Mobile.App.Ordenes.OS
                     var datos = new Views.Datos(parameter);// (new Orden((Mensaje)parameter[0]));                                        
                     return Navigation.PushAsync(datos, true);
                 case PageKeys.Config:
-                    var config = new Views.Configuracion(parameter);// (new Orden((Mensaje)parameter[0]));                                        
+                    var config = new Views.Configuracion();// (new Orden((Mensaje)parameter[0]));                                        
                     return Navigation.PushAsync(config, true);
             }
 

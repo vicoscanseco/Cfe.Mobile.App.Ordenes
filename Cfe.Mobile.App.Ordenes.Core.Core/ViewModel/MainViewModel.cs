@@ -25,34 +25,45 @@ namespace Cfe.Mobile.App.Ordenes.Core.Core.ViewModel {
         private string nombre;
         public string Nombre { get => nombre; set => Set(ref nombre, value); }
 
+        MensajesAPI api = new MensajesAPI();
+
+        MensajesDataContext dtc = new MensajesDataContext();
+
         public MainViewModel() {
+            var os = OS.DependencyService.Get<OS.IOS>();
+            IDNotif = os.ObtieneIDNotificaciones();
+
+
+            dtc.ActualizaTablas(IDNotif);
             Cargar();
             //rpe = "9L0BD";
             GetDatosUsuario();
-            var os = OS.DependencyService.Get<OS.IOS>();
-            IDNotif = os.ObtieneIDNotificaciones();
+
 
         }
 
         private async void GetDatosUsuario() {
-            var users = await dtc.GetAllAsync<Usuario>();
-            if (users.Count != 0) {
-                //Se leen los datos de la DB
-                var user = users.Select(x => x).FirstOrDefault();
-                RPE = user.Rpe;
-                IDNotif = user.IdEquipo;
-                Nombre = user.Nombre;
+            try {
+                var users = await dtc.GetAllAsync<Usuario>();
+                if (users.Count != 0) {
+                    //Se leen los datos de la DB
+                    var user = users.Select(x => x).FirstOrDefault();
+                    RPE = user.Rpe;
+                    IDNotif = user.IdEquipo;
+                    Nombre = user.Nombre;
 
-            } else {
-                RPE = "NINGUNO";
-                Nombre = "DESCONOCIDO";
+                } else {
+                    RPE = "NINGUNO";
+                    Nombre = "DESCONOCIDO";
+                }
+            }catch(Exception e) {
+                Debug.WriteLine(e.Message);
             }
+
         }
 
 
-        MensajesAPI api = new MensajesAPI();
-
-        MensajesDataContext dtc = new MensajesDataContext();
+      
 
 
         private string idNotif;
@@ -117,14 +128,16 @@ namespace Cfe.Mobile.App.Ordenes.Core.Core.ViewModel {
                 //aca se hace la llamada al WS
                 try {
                     var msj = await api.Obtener(rpe);
-                    foreach (var m in Mensajes) {
-                        await dtc.DeleteAsync<Mensaje>(m);
+                    if (msj != null) {
+                        foreach (var m in Mensajes) {
+                            await dtc.DeleteAsync<Mensaje>(m);
+                        }
+                        foreach (var item in msj) {
+                            await dtc.InsertAsync<Mensaje>(item);
+                            Mensajes.Add(item);
+                        }
+                        Cargar();
                     }
-                    foreach (var item in msj) {
-                        await dtc.InsertAsync<Mensaje>(item);
-                        Mensajes.Add(item);
-                    }
-                    Cargar();
                 } catch (Exception e) {
                     //await page.DisplayAlert("Alert from View Model", "", "Ok");
                     Debug.WriteLine(e.ToString());
