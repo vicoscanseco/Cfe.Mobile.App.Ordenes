@@ -130,23 +130,20 @@ namespace Cfe.Mobile.App.Ordenes.Core.Core.ViewModel {
                 //aca se hace la llamada al WS
                 try {
                     var users = await dtc.GetAllAsync<Usuario>();
-                    var user = new Usuario { Rpe = rpe, Nombre = Nombre, IdDivision = 1, IdZona = 6, IdArea = 1, IdEquipo = IDNotif };
-                    if (users.Count == 0) {   
-                        await dtc.InsertAsync<Usuario>(user);
-                        await api.Registrar(RPE, IDNotif);
-                    } else {
-                        var usr = users.Select(x => x).FirstOrDefault();
-                        usr.Nombre = Nombre;
-                        usr.Rpe = RPE;
-                        usr.IdEquipo = IDNotif;
-                        await dtc.UpdateAsync<Usuario>(usr);
-                    }
+                    
+                    var usr = users.Select(x => x).FirstOrDefault();
+                    usr.Nombre = Nombre;
+                    usr.Rpe = RPE;
+                    usr.IdEquipo = IDNotif;
+                    await dtc.UpdateAsync<Usuario>(usr);
+                    await api.Registrar(RPE, IDNotif);
+                    navegarACommand.Execute("Home");
 
                 } catch (Exception e) {
                     //await page.DisplayAlert("Alert from View Model", "", "Ok");
                 }
 
-            }, () => { return !string.IsNullOrWhiteSpace(RPE); }));
+            }, () => { return true; }));
         }
 
 

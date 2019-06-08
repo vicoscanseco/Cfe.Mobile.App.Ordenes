@@ -27,11 +27,7 @@ namespace Cfe.Mobile.App.Ordenes.Views {
         //}
 
 
-        private ConfigViewModel ViewModel {
-            get {
-                return BindingContext as ConfigViewModel;
-            }
-        }
+        
 
     }
 }

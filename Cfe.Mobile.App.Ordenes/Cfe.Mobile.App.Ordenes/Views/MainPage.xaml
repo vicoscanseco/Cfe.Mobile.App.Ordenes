@@ -69,10 +69,11 @@
             </Grid.RowDefinitions>                        
             <!--<Editor Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="5" Text="{Binding IDNotif}" HeightRequest="200"  Margin="5"/>-->            
             <Button Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="4" ImageSource="ic_cloud_download_white_18dp.png" Text="Descargar" 
-                    ContentLayout="Left, 5"  Command="{Binding CargarDatosCommand}" />            
+                    ContentLayout="Left, 5"  Command="{Binding CargarDatosCommand}" />
             <Label Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="4"  Text="TAREAS" Style="{StaticResource SubtituloLabel}" />
             <BoxView Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="4"  Style="{StaticResource FormBorder}" />
             <BoxView Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" Grid.RowSpan="4" Style="{StaticResource FormBack}" />
+            
             <ListView Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="4" ItemsSource="{Binding Mensajes}" SelectedItem="{Binding Seleccionada}" >
                 <ListView.ItemTemplate>
                     <DataTemplate>

@@ -34,7 +34,7 @@ namespace Cfe.Mobile.App.Ordenes.Core.Core.ViewModel {
             IDNotif = os.ObtieneIDNotificaciones();
 
 
-            dtc.ActualizaTablas(IDNotif);
+           dtc.ActualizaIDEquipo(IDNotif);
             Cargar();
             //rpe = "9L0BD";
             GetDatosUsuario();

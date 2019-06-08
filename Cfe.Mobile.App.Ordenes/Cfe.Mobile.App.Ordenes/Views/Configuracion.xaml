@@ -59,10 +59,10 @@
                 <Label Grid.Column="0" Grid.Row="5" Grid.ColumnSpan="2"  Text="Área:" Style="{StaticResource FormLabel}"  />
                 <Entry Grid.Column="2" Grid.Row="5" Grid.ColumnSpan="4" Placeholder="Área"/>-->
                 <Label Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2"  Text="ID Dispositivo: " Style="{StaticResource FormLabel}" VerticalOptions="Start"  />
-                <Editor Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4"  HeightRequest="200"  Margin="5" Text="{Binding IDNotif}"/>
+                <Editor Grid.Column="2" Grid.Row="6" Grid.ColumnSpan="4"  HeightRequest="200"  Margin="5" Text="{Binding IDNotif, Mode=TwoWay}"/>
 
                 <Button  Grid.Column="0" Grid.Row="7" Grid.ColumnSpan="6"  ImageSource="ic_save_white_18dp.png"  
-                         ContentLayout="Left, 20" Text="Guardar"  Margin="5"  Command="{Binding RegistrarEquipoCommand}"/>
+                         ContentLayout="Left, 20" Text="Guardar"  Margin="5"  Command="{Binding RegistrarEquipoCommand, Mode=TwoWay}"/>
 
             </Grid>
         </StackLayout>

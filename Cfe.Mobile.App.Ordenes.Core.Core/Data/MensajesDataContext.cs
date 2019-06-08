@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Text;
 using SQLite;
 using Cfe.Mobile.App.Ordenes.Core.Core.OS;
+using Cfe.Mobile.App.Ordenes.Core.Core.Model;
+using System.Linq;
 
 namespace Cfe.Mobile.App.Ordenes.Core.Core.Data {
     class MensajesDataContext : SQLiteDataContext {
@@ -23,6 +25,8 @@ namespace Cfe.Mobile.App.Ordenes.Core.Core.Data {
             db.CreateTable<Model.Zona>();
             db.CreateTable<Model.Area>();
             db.CreateTable<Model.Usuario>();
+            var user = new Model.Usuario { IdEquipo = "", Nombre = "Desconocido", Rpe = "XXXXX" };
+            _db.Insert(user);
         }
 
 
@@ -32,14 +36,18 @@ namespace Cfe.Mobile.App.Ordenes.Core.Core.Data {
             await dbAsync.CreateTableAsync<Model.Zona>();
             await dbAsync.CreateTableAsync<Model.Area>();
             await dbAsync.CreateTableAsync<Model.Usuario>();
+            //Se Inicializa la Base de datos
+            var user = new Model.Usuario { IdEquipo = "", Nombre = "Desconocido", Rpe = "XXXXX" };
+            await _dbAsync.InsertAsync(user);
         }
 
-        public async void ActualizaTablas(string idEquipo) {
+        public void ActualizaIDEquipo(string idEquipo) {
             try {
-                //await dbAsync.DropTableAsync<Model.Usuario>();               
-                await dbAsync.CreateTableAsync<Model.Usuario>();
-                var user = new Model.Usuario { IdArea = 0, IdDivision = 0, IdEquipo = idEquipo, IdZona = 0, Nombre = "Desconocido", Rpe = "XXXXX" };
-                await _dbAsync.InsertAsync(user);
+                var users =  GetAll<Usuario>();
+                var usr = users.Select(x => x).FirstOrDefault();                                               
+                usr.IdEquipo = idEquipo;
+                Update<Usuario>(usr);
+
             } catch { }
 
         }
